@@ -1,6 +1,5 @@
 'use client'
 import { useState } from 'react'
-//import { useRouter } from 'next/navigation';
 import { signIn } from "next-auth/react"
 
 export default function RegisterPage() {
@@ -9,7 +8,6 @@ export default function RegisterPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState<string | null>(null);
-    // const router = useRouter();
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -31,10 +29,8 @@ export default function RegisterPage() {
             //res.ok is a standard property of the Fetch API response object.
             if (!res.ok) throw new Error(data.message);
 
-            // next route navigation
-            //router.push('/login');
-
             signIn(); // Redirects to the default login page provided by next-auth
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (err: any) {
             setError(err.message);
         }
